@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International MindBizz Fest 2026 (IMF2026) | PTSB</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            corp: {
+              navy: '#0b1e36',
+              blue: '#153e75',
+              sky: '#0284c7',
+              darkgreen: '#064e3b',
+              green: '#047857',
+              teal: '#0d9488',
+              gold: '#d97706',
+              amber: '#f59e0b',
+              lightgold: '#fef3c7',
+              surface: '#f8fafc',
+              border: '#e2e8f0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Halang sebarang limpahan mendatar (horizontal scroll) untuk embed yang kemas */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      background-color: #f8fafc;
+    }
+    
+    /* Penyesuaian corak latar belakang korporat */
+    .hero-pattern {
+      background-color: #0b1e36;
+      background-image: radial-gradient(#1e3a8a 1px, transparent 1px), radial-gradient(#047857 1px, #0b1e36 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+    
+    /* Animasi lembut */
+    .transition-all-custom {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-slate-50 flex flex-col min-h-screen">
+
+  <!-- ==================== TOP BAR & NAVIGATION ==================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        
+        <!-- Logo & Branding -->
+        <a href="#home" class="flex items-center gap-3 group text-left">
+          <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-tr from-corp-navy via-corp-blue to-corp-teal flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-md border border-white/20 group-hover:scale-105 transition-all-custom">
+            <i class="fa-solid fa-lightbulb text-amber-300"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-xs font-bold uppercase tracking-wider text-corp-gold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">IMF 2026</span>
+              <span class="text-[11px] text-slate-500 hidden sm:inline">PTSB Kulim</span>
+            </div>
+            <h1 class="text-base sm:text-lg font-extrabold text-corp-navy tracking-tight leading-tight">
+              MindBizz <span class="text-corp-green">Fest</span>
+            </h1>
+          </div>
+        </a>
+
+        <!-- Desktop Menu Nav -->
+        <nav class="hidden md:flex items-center gap-1 lg:gap-2 text-sm font-semibold text-slate-600">
+          <a href="#about" class="px-3 py-2 rounded-lg hover:text-corp-blue hover:bg-slate-100 transition-all-custom" data-i18n="nav_about">Tentang</a>
+          <a href="#stats" class="px-3 py-2 rounded-lg hover:text-corp-blue hover:bg-slate-100 transition-all-custom" data-i18n="nav_stats">Statistik</a>
+          <a href="#activities" class="px-3 py-2 rounded-lg hover:text-corp-blue hover:bg-slate-100 transition-all-custom" data-i18n="nav_activities">Aktiviti</a>
+          <a href="#tentatif" class="px-3 py-2 rounded-lg hover:text-corp-blue hover:bg-slate-100 transition-all-custom" data-i18n="nav_schedule">Tentatif</a>
+          <a href="#contacts" class="px-3 py-2 rounded-lg hover:text-corp-blue hover:bg-slate-100 transition-all-custom" data-i18n="nav_contact">Penyelaras</a>
+          <a href="#location" class="px-3 py-2 rounded-lg hover:text-corp-blue hover:bg-slate-100 transition-all-custom" data-i18n="nav_location">Lokasi</a>
+        </nav>
+
+        <!-- Right Side: Language Switcher & Mobile Toggle -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Language Toggle (BM | EN) -->
+          <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-inner">
+            <button id="lang-bm" onclick="setLanguage('bm')" class="px-2.5 py-1 text-xs font-bold rounded-lg transition-all-custom bg-corp-blue text-white shadow-sm" title="Bahasa Melayu">
+              BM
+            </button>
+            <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 text-xs font-bold rounded-lg transition-all-custom text-slate-600 hover:text-slate-900" title="English">
+              EN
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-corp-blue hover:bg-slate-100 focus:outline-none" aria-label="Menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1 shadow-lg">
+      <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100 hover:text-corp-blue" data-i18n="nav_about">Tentang</a>
+      <a href="#stats" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100 hover:text-corp-blue" data-i18n="nav_stats">Statistik</a>
+      <a href="#activities" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100 hover:text-corp-blue" data-i18n="nav_activities">Aktiviti</a>
+      <a href="#tentatif" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100 hover:text-corp-blue" data-i18n="nav_schedule">Tentatif</a>
+      <a href="#contacts" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100 hover:text-corp-blue" data-i18n="nav_contact">Penyelaras</a>
+      <a href="#location" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100 hover:text-corp-blue" data-i18n="nav_location">Lokasi</a>
+    </div>
+  </header>
+
+  <!-- ==================== HERO BANNER SECTION ==================== -->
+  <section id="home" class="relative hero-pattern text-white pt-10 pb-16 md:py-20 overflow-hidden border-b-4 border-corp-gold">
+    <!-- Decorative Glows -->
+    <div class="absolute top-10 left-1/4 w-96 h-96 bg-corp-sky/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-corp-teal/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Badges / Organizers -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-emerald-300 border border-emerald-500/30 backdrop-blur">
+          <i class="fa-solid fa-graduation-cap"></i> KPT & JPPKK
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-amber-300 border border-amber-500/30 backdrop-blur">
+          <i class="fa-solid fa-building-columns"></i> Politeknik Tuanku Sultanah Bahiyah
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-sky-300 border border-sky-500/30 backdrop-blur">
+          <i class="fa-solid fa-globe"></i> Zon Kedah & Perlis
+        </span>
+      </div>
+
+      <!-- Main Titles -->
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-block mb-3 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-corp-gold/30 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-bold tracking-wider uppercase">
+          ✦ <span data-i18n="hero_tagline">YOUNG MINDS, GLOBAL BUSINESS</span> ✦
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white mb-4">
+          INTERNATIONAL <br class="hidden sm:inline" />
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-emerald-300 to-sky-300">
+            MindBizz Fest 2026
+          </span>
+        </h1>
+
+        <p class="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 font-normal" data-i18n="hero_desc">
+          Pentas mega kolaborasi keusahawanan, inovasi teknologi, dan kepimpinan bakat muda TVET peringkat antarabangsa merentasi Malaysia, Indonesia dan Thailand.
+        </p>
+
+        <!-- Key Meta Quick Info: Date & Venue Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8 text-left">
+          
+          <!-- Date Card -->
+          <div class="bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-4 flex items-center gap-4 hover:border-amber-400/50 transition-all-custom">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-300 text-xl shrink-0">
+              <i class="fa-regular fa-calendar-days"></i>
+            </div>
+            <div>
+              <p class="text-xs text-amber-200 uppercase font-semibold" data-i18n="hero_date_label">Tarikh Program</p>
+              <h4 class="text-base sm:text-lg font-bold text-white">14 – 15 September 2026</h4>
+              <p class="text-xs text-slate-300" data-i18n="hero_day_desc">Isnin & Selasa (2 Hari)</p>
+            </div>
+          </div>
+
+          <!-- Location Card -->
+          <div class="bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-4 flex items-center gap-4 hover:border-emerald-400/50 transition-all-custom">
+            <div class="w-12 h-12 rounded-xl bg-emerald-400/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300 text-xl shrink-0">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <p class="text-xs text-emerald-200 uppercase font-semibold" data-i18n="hero_venue_label">Lokasi Acara</p>
+              <h4 class="text-base sm:text-lg font-bold text-white">Politeknik Tuanku Sultanah Bahiyah</h4>
+              <p class="text-xs text-slate-300">Kulim Hi-Tech Park, Kedah</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <a href="#activities" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-amber-500/30 transition-all-custom transform hover:-translate-y-0.5 flex items-center gap-2">
+            <i class="fa-solid fa-list-check"></i>
+            <span data-i18n="btn_explore_activities">Terokai Aktiviti</span>
+          </a>
+          <a href="#tentatif" class="px-6 py-3 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-white font-semibold text-sm sm:text-base backdrop-blur transition-all-custom flex items-center gap-2">
+            <i class="fa-regular fa-clock"></i>
+            <span data-i18n="btn_view_schedule">Jadual Tentatif</span>
+          </a>
+          <a href="#contacts" class="px-6 py-3 rounded-xl bg-corp-teal/30 hover:bg-corp-teal/40 border border-teal-400/40 text-teal-200 font-semibold text-sm sm:text-base backdrop-blur transition-all-custom flex items-center gap-2">
+            <i class="fa-solid fa-phone"></i>
+            <span data-i18n="btn_coordinators">Hubungi Penyelaras</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- 6 Pillars Floating Ribbon -->
+      <div class="mt-12 pt-8 border-t border-white/10">
+        <p class="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4" data-i18n="hero_pillars_title">
+          Teras Utama Program IMF 2026
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          
+          <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 text-center transition-all-custom">
+            <i class="fa-solid fa-chart-line text-emerald-400 text-lg mb-1"></i>
+            <h5 class="text-xs font-bold text-white uppercase" data-i18n="pillar_1">Inovasi</h5>
+          </div>
+
+          <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 text-center transition-all-custom">
+            <i class="fa-solid fa-users-gear text-amber-400 text-lg mb-1"></i>
+            <h5 class="text-xs font-bold text-white uppercase" data-i18n="pillar_2">Keusahawanan</h5>
+          </div>
+
+          <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 text-center transition-all-custom">
+            <i class="fa-solid fa-microchip text-sky-400 text-lg mb-1"></i>
+            <h5 class="text-xs font-bold text-white uppercase" data-i18n="pillar_3">Teknologi</h5>
+          </div>
+
+          <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 text-center transition-all-custom">
+            <i class="fa-solid fa-earth-americas text-teal-400 text-lg mb-1"></i>
+            <h5 class="text-xs font-bold text-white uppercase" data-i18n="pillar_4">Global</h5>
+          </div>
+
+          <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 text-center transition-all-custom">
+            <i class="fa-solid fa-handshake-angle text-indigo-400 text-lg mb-1"></i>
+            <h5 class="text-xs font-bold text-white uppercase" data-i18n="pillar_5">Kolaborasi</h5>
+          </div>
+
+          <div class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-3 text-center transition-all-custom">
+            <i class="fa-solid fa-wand-magic-sparkles text-pink-400 text-lg mb-1"></i>
+            <h5 class="text-xs font-bold text-white uppercase" data-i18n="pillar_6">Kreatif</h5>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== COUNTDOWN & STATISTIK SECTION ==================== -->
+  <section id="stats" class="py-12 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Countdown Strip -->
+      <div class="bg-gradient-to-r from-corp-navy via-corp-blue to-corp-darkgreen rounded-2xl p-6 text-white mb-10 shadow-md">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div class="text-center lg:text-left">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-3 py-1 rounded-full mb-1">
+              <i class="fa-regular fa-bell"></i> <span data-i18n="countdown_badge">Kiraan Detik Acara</span>
+            </span>
+            <h3 class="text-xl font-bold" data-i18n="countdown_title">Menuju Pelancaran IMF 2026</h3>
+            <p class="text-xs text-slate-300" data-i18n="countdown_sub">14 September 2026 • Dewan Sri Bahiyah, PTSB</p>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+            <div class="bg-white/10 backdrop-blur rounded-xl p-2.5 sm:p-3 border border-white/15 min-w-[65px] sm:min-w-[80px]">
+              <span id="cd-days" class="block text-xl sm:text-3xl font-extrabold text-amber-300">--</span>
+              <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-300" data-i18n="cd_days">Hari</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-2.5 sm:p-3 border border-white/15 min-w-[65px] sm:min-w-[80px]">
+              <span id="cd-hours" class="block text-xl sm:text-3xl font-extrabold text-white">--</span>
+              <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-300" data-i18n="cd_hours">Jam</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-2.5 sm:p-3 border border-white/15 min-w-[65px] sm:min-w-[80px]">
+              <span id="cd-minutes" class="block text-xl sm:text-3xl font-extrabold text-white">--</span>
+              <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-300" data-i18n="cd_mins">Minit</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-2.5 sm:p-3 border border-white/15 min-w-[65px] sm:min-w-[80px]">
+              <span id="cd-seconds" class="block text-xl sm:text-3xl font-extrabold text-emerald-300">--</span>
+              <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-300" data-i18n="cd_secs">Saat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats 4-Grid (Exact data from INFO - STATISTIK.pdf) -->
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-corp-navy tracking-tight" data-i18n="stats_title">Impak & Statistik Festival</h2>
+        <p class="text-sm text-slate-500" data-i18n="stats_subtitle">Sasaran penglibatan berskala tinggi merangkumi institusi TVET POLYCC dan serantau</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        
+        <!-- Stat Card 1 -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 text-center hover:shadow-md hover:border-corp-blue/40 transition-all-custom">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-blue-100 text-corp-blue flex items-center justify-center text-xl mb-3">
+            <i class="fa-solid fa-school"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-corp-navy mb-1">12</div>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700" data-i18n="stat_polycc">POLYCC Zon Kedah / Perlis</p>
+          <span class="text-[11px] text-slate-400" data-i18n="stat_polycc_sub">Institusi Politeknik & Kolej Komuniti</span>
+        </div>
+
+        <!-- Stat Card 2 -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 text-center hover:shadow-md hover:border-corp-green/40 transition-all-custom">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-corp-green flex items-center justify-center text-xl mb-3">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-corp-darkgreen mb-1">14</div>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700" data-i18n="stat_activities">Aktiviti & Pertandingan</p>
+          <span class="text-[11px] text-slate-400" data-i18n="stat_activities_sub">Individu, Kumpulan & Korporat</span>
+        </div>
+
+        <!-- Stat Card 3 -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 text-center hover:shadow-md hover:border-corp-gold/40 transition-all-custom">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-amber-100 text-corp-gold flex items-center justify-center text-xl mb-3">
+            <i class="fa-solid fa-user-group"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-corp-gold mb-1">600+</div>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700" data-i18n="stat_participants">Sasaran Peserta</p>
+          <span class="text-[11px] text-slate-400" data-i18n="stat_participants_sub">Pelajar, Komuniti & Industri</span>
+        </div>
+
+        <!-- Stat Card 4 -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 text-center hover:shadow-md hover:border-teal-500/40 transition-all-custom">
+          <div class="w-12 h-12 mx-auto rounded-xl bg-teal-100 text-corp-teal flex items-center justify-center text-xl mb-3">
+            <i class="fa-solid fa-flag"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-corp-teal mb-1">3</div>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700" data-i18n="stat_countries">Negara Terlibat</p>
+          <span class="text-[11px] text-slate-400">Malaysia • Indonesia • Thailand</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT & OBJECTIVE SECTION ==================== -->
+  <section id="about" class="py-14 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Visual Box -->
+        <div class="lg:col-span-5">
+          <div class="bg-gradient-to-br from-corp-navy to-corp-blue rounded-3xl p-6 sm:p-8 text-white relative shadow-xl overflow-hidden border border-slate-300">
+            <div class="absolute -bottom-10 -right-10 w-44 h-44 bg-corp-teal/30 rounded-full blur-2xl"></div>
+            
+            <span class="inline-block px-3 py-1 bg-amber-400/20 text-amber-300 border border-amber-400/30 rounded-lg text-xs font-bold mb-4" data-i18n="about_tag">
+              MISI & VISI FESTIVAL
+            </span>
+            <h3 class="text-2xl font-bold mb-3 leading-snug" data-i18n="about_heading">
+              Memperkasa Bakat Madani Melalui Keusahawanan Bertaraf Global
+            </h3>
+            <p class="text-sm text-slate-200 leading-relaxed mb-6" data-i18n="about_desc_1">
+              International MindBizz Fest 2026 (IMF2026) merupakan inisiatif unggul di bawah Jabatan Pendidikan Politeknik dan Kolej Komuniti (JPPKK) anjuran Politeknik Tuanku Sultanah Bahiyah bagi melahirkan graduan TVET yang berdaya cipta, celik kewangan dan bersedia memimpin arena perniagaan moden.
+            </p>
+
+            <div class="space-y-3">
+              <div class="flex items-start gap-3 text-xs sm:text-sm">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                <span data-i18n="about_pt1">Pendedahan kepada teknologi Artificial Intelligence (AI) & strategi pemasaran digital.</span>
+              </div>
+              <div class="flex items-start gap-3 text-xs sm:text-sm">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                <span data-i18n="about_pt2">Jaringan perkongsian ilmu rentas sempadan bersama perwakilan antarabangsa.</span>
+              </div>
+              <div class="flex items-start gap-3 text-xs sm:text-sm">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                <span data-i18n="about_pt3">Peluang pembiayaan dan pendedahan jualan sebenar (*The Next Top Hawker*).</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Content Info -->
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <span class="text-xs font-bold text-corp-green tracking-wider uppercase" data-i18n="about_label">Mengenai IMF 2026</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-corp-navy mt-1 tracking-tight" data-i18n="about_title_2">
+              Platform Integrasi Akademik, Industri & Komuniti
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed" data-i18n="about_desc_2">
+              Bertemakan <strong>"Young Minds, Global Business"</strong>, festival ini bukan sekadar pertandingan, malah hab interaktif yang menggabungkan 14 acara utama merangkumi simulasi perniagaan, literasi kewangan bersama AKPK, kelestarian alam sekitar, kesihatan fizikal, serta program CSR berteraskan AI.
+            </p>
+          </div>
+
+          <!-- 3 Highlights Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-emerald-50 text-corp-green flex items-center justify-center text-lg mb-2">
+                <i class="fa-solid fa-seedling"></i>
+              </div>
+              <h4 class="font-bold text-slate-800 text-sm mb-1" data-i18n="hl_1_title">Kelestarian & Seni</h4>
+              <p class="text-xs text-slate-500" data-i18n="hl_1_desc">Pertandingan seni bahan kitar semula sempena sambutan kemerdekaan negara.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-blue-50 text-corp-blue flex items-center justify-center text-lg mb-2">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <h4 class="font-bold text-slate-800 text-sm mb-1" data-i18n="hl_2_title">Teknologi & AI</h4>
+              <p class="text-xs text-slate-500" data-i18n="hl_2_desc">Bengkel pengaturcaraan asas CSR menggunakan alatan AI terkini.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-amber-50 text-corp-gold flex items-center justify-center text-lg mb-2">
+                <i class="fa-solid fa-coins"></i>
+              </div>
+              <h4 class="font-bold text-slate-800 text-sm mb-1" data-i18n="hl_3_title">FinFit Bersama AKPK</h4>
+              <p class="text-xs text-slate-500" data-i18n="hl_3_desc">Pendidikan pengurusan kewangan berimpak tinggi edisi utara.</p>
+            </div>
+
+          </div>
+
+          <!-- Registration Status Alert -->
+          <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-100 text-corp-gold flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <div>
+                <h5 class="text-xs sm:text-sm font-bold text-slate-900" data-i18n="reg_status_title">Status Pendaftaran Acara:</h5>
+                <p class="text-xs text-slate-600" data-i18n="reg_status_sub">Portal pendaftaran rasmi akan dibuka dan dikemaskini dalam masa terdekat.</p>
+              </div>
+            </div>
+            <button onclick="openNoticeModal()" class="px-4 py-2 bg-corp-navy text-white text-xs font-semibold rounded-xl hover:bg-corp-blue transition-all-custom whitespace-nowrap" data-i18n="btn_more_info">
+              Maklumat Lanjut
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SENARAI AKTIVITI LENGKAP ==================== -->
+  <section id="activities" class="py-14 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <span class="text-xs font-bold text-corp-gold uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full border border-amber-200" data-i18n="act_tag">
+          14 ACARA UTAMA
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-corp-navy mt-2 tracking-tight" data-i18n="act_title">
+          Senarai Aktiviti & Pertandingan IMF 2026
+        </h2>
+        <p class="text-sm text-slate-500 mt-2" data-i18n="act_desc">
+          Pilih kategori di bawah untuk meneliti perincian acara, format penyertaan dan pegawai penyelaras yang boleh dihubungi.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex items-center justify-center gap-2 flex-wrap mb-8">
+        <button onclick="filterActivities('all')" class="filter-btn active px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-corp-blue text-white shadow-sm" data-filter="all" data-i18n="filter_all">
+          Semua Aktiviti (14)
+        </button>
+        <button onclick="filterActivities('kumpulan')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="kumpulan" data-i18n="filter_group">
+          Pertandingan Kumpulan (6)
+        </button>
+        <button onclick="filterActivities('individu')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="individu" data-i18n="filter_solo">
+          Individu (1)
+        </button>
+        <button onclick="filterActivities('keusahawanan')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="keusahawanan" data-i18n="filter_biz">
+          Keusahawanan (3)
+        </button>
+        <button onclick="filterActivities('korporat')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="korporat" data-i18n="filter_corp">
+          Aktiviti Korporat (2)
+        </button>
+        <button onclick="filterActivities('kesukanan')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="kesukanan" data-i18n="filter_sports">
+          Kesukanan (2)
+        </button>
+      </div>
+
+      <!-- Activities Grid Container -->
+      <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. 3 Minutes Pitching -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-blue hover:shadow-lg transition-all-custom" data-category="kumpulan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-blue-100 text-corp-blue" data-i18n="cat_group">Kumpulan</span>
+            <span class="text-xs text-slate-400"><i class="fa-solid fa-users"></i> Pitching</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            3 Minutes Pitching
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_pitching">
+            Pembentangan idea perniagaan inovatif dan model komersial secara padat serta meyakinkan dalam masa 3 minit di hadapan panel juri.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Hasnita binti Ramli</p>
+            </div>
+            <a href="https://wa.me/60196559686?text=Pertanyaan%20Mengenai%203%20Minutes%20Pitching%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-6559686
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Program FINFIT Challenge 2026 Edisi Utara - AKPK -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-blue hover:shadow-lg transition-all-custom" data-category="kumpulan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-blue-100 text-corp-blue" data-i18n="cat_group">Kumpulan</span>
+            <span class="text-xs font-semibold text-amber-600"><i class="fa-solid fa-coins"></i> AKPK Partner</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Program FINFIT Challenge 2026 Edisi Utara - AKPK
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_finfit">
+            Cabaran celik kewangan dan pengurusan bajet interaktif anjuran bersama Agensi Kaunseling dan Pengurusan Kredit (AKPK).
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Hajaratul binti Ahmad</p>
+            </div>
+            <a href="https://wa.me/60194121831?text=Pertanyaan%20Mengenai%20FINFIT%20Challenge%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-4121831
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Transforming Waste Into Inspiring Works of Art -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-blue hover:shadow-lg transition-all-custom" data-category="kumpulan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-blue-100 text-corp-blue" data-i18n="cat_group">Kumpulan</span>
+            <span class="text-xs text-emerald-600"><i class="fa-solid fa-recycle"></i> Eco & Art</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Transforming Waste Into Inspiring Works of Art: Tema Kemerdekaan
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_waste">
+            Pertandingan mencipta karya seni kreatif dan arca bermakna daripada bahan terbuang bertemakan semangat kemerdekaan Malaysia.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Kalsom binti Othman</p>
+            </div>
+            <a href="https://wa.me/60134480408?text=Pertanyaan%20Mengenai%20Transforming%20Waste%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4480408
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Video Promosi Produk (TikTok/Reels) -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-blue hover:shadow-lg transition-all-custom" data-category="kumpulan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-blue-100 text-corp-blue" data-i18n="cat_group">Kumpulan</span>
+            <span class="text-xs text-pink-500"><i class="fa-brands fa-tiktok"></i> Reels/TikTok</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Video Promosi Produk (TikTok / Reels)
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_video">
+            Penghasilan video pemasaran pendek berimpak tinggi yang kreatif untuk mempromosikan produk jualan usahawan muda di media sosial.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Haliza binti Aziz</p>
+            </div>
+            <a href="https://wa.me/60134946479?text=Pertanyaan%20Mengenai%20Video%20Promosi%20Produk%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4946479
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Best Deco Showcase The Next Top Hawker -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-blue hover:shadow-lg transition-all-custom" data-category="kumpulan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-blue-100 text-corp-blue" data-i18n="cat_group">Kumpulan</span>
+            <span class="text-xs text-amber-500"><i class="fa-solid fa-store"></i> Showcase</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Best Deco Showcase The Next Top Hawker
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_deco">
+            Penilaian kreativiti hiasan reruai gerai jualan, susun atur visual (*visual merchandising*), kebersihan dan penjenamaan gerai.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Syahanim binti Saidun</p>
+            </div>
+            <a href="https://wa.me/60135201604?text=Pertanyaan%20Mengenai%20Best%20Deco%20Showcase%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-5201604
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Gerai Jualan Tertinggi The Next Top Hawker -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-blue hover:shadow-lg transition-all-custom" data-category="kumpulan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-blue-100 text-corp-blue" data-i18n="cat_group">Kumpulan</span>
+            <span class="text-xs text-corp-green"><i class="fa-solid fa-cash-register"></i> Sales Battle</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Gerai Jualan Tertinggi The Next Top Hawker
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_sales">
+            Pertandingan jualan sebenar (*live marketplace*) bagi menguji kemahiran strategi harga, tarikan pelanggan dan kutipan jualan tertinggi.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Ts. Nurhuda binti Ismail</p>
+            </div>
+            <a href="https://wa.me/60122634847?text=Pertanyaan%20Mengenai%20Gerai%20Jualan%20Tertinggi%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-2634847
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Mindbizz Quiz Challenge -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-gold hover:shadow-lg transition-all-custom" data-category="individu">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-amber-100 text-corp-gold" data-i18n="cat_solo">Individu</span>
+            <span class="text-xs text-slate-400"><i class="fa-solid fa-brain"></i> Quiz & Trivia</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-gold transition-all-custom mb-1">
+            Mindbizz Quiz Challenge
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_quiz">
+            Kuiz interaktif menguji kepantasan dan pengetahuan am dalam bidang perniagaan, literasi kewangan, teknologi dan ekonomi global.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Nurul Amira binti Din</p>
+            </div>
+            <a href="https://wa.me/60194719529?text=Pertanyaan%20Mengenai%20Mindbizz%20Quiz%20Challenge%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-4719529
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Business Model Canvas: Peta Jalan Kejayaan -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-teal hover:shadow-lg transition-all-custom" data-category="keusahawanan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-teal-100 text-corp-teal" data-i18n="cat_biz">Keusahawanan</span>
+            <span class="text-xs text-teal-600"><i class="fa-solid fa-chart-pie"></i> Bengkel BMC</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-teal transition-all-custom mb-1">
+            Business Model Canvas (BMC): Peta Jalan Kejayaan
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_bmc">
+            Bengkel praktikal memetakan cadangan nilai produk, struktur kos, sasaran pasaran dan strategi perniagaan yang mantap.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Nurul Syamshida binti Mokhtar</p>
+            </div>
+            <a href="https://wa.me/60134406779?text=Pertanyaan%20Mengenai%20Bengkel%20BMC%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4406779
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. Ceramah "Memulakan Perniagaan: Cabaran dan Peluang" -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-teal hover:shadow-lg transition-all-custom" data-category="keusahawanan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-teal-100 text-corp-teal" data-i18n="cat_biz">Keusahawanan</span>
+            <span class="text-xs text-corp-blue"><i class="fa-solid fa-microphone"></i> Ceramah Pakar</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-teal transition-all-custom mb-1">
+            Ceramah "Memulakan Perniagaan: Cabaran & Peluang"
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_talk">
+            Sesi wacana bersama tokoh usahawan berkongsi realiti cabaran pemula (*startup*), pengurusan risiko dan peluang pasaran masa kini.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Nurul Syamshida binti Mokhtar</p>
+            </div>
+            <a href="https://wa.me/60134406779?text=Pertanyaan%20Mengenai%20Ceramah%20Perniagaan%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4406779
+            </a>
+          </div>
+        </div>
+
+        <!-- 10. Perkongsian Ilmu Dari Wakil Antarabangsa -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-teal hover:shadow-lg transition-all-custom" data-category="keusahawanan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-teal-100 text-corp-teal" data-i18n="cat_biz">Keusahawanan</span>
+            <span class="text-xs font-semibold text-sky-600"><i class="fa-solid fa-globe"></i> Global Forum</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-teal transition-all-custom mb-1">
+            Perkongsian Ilmu Wakil Antarabangsa (ID • TH • MY)
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_international">
+            Forum perkongsian eksklusif trend perniagaan serantau bersama penceramah jemputan dari Indonesia, Thailand dan Malaysia.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Suryani binti Sabri</p>
+            </div>
+            <a href="https://wa.me/60125052624?text=Pertanyaan%20Mengenai%20Perkongsian%20Antarabangsa%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-5052624
+            </a>
+          </div>
+        </div>
+
+        <!-- 11. Pameran Agensi Korporat & Kelab PTSB -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-navy hover:shadow-lg transition-all-custom" data-category="korporat">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-700" data-i18n="cat_corp">Korporat</span>
+            <span class="text-xs text-slate-400"><i class="fa-solid fa-building"></i> Pameran & Info</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Pameran Agensi Korporat, Unit Psikologi & Kelab PTSB
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_exhibition">
+            Pameran khidmat industri, konsultasi kesihatan mental dan psikologi kerjaya serta penglibatan persatuan pelajar.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">Pn. Sharipah Khadijah binti S. Hashim</p>
+            </div>
+            <a href="https://wa.me/60104641220?text=Pertanyaan%20Mengenai%20Pameran%20Agensi%20Korporat%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 010-4641220
+            </a>
+          </div>
+        </div>
+
+        <!-- 12. Program CSR Basic Programming Using AI Tool -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-navy hover:shadow-lg transition-all-custom" data-category="korporat">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-700" data-i18n="cat_corp">Korporat</span>
+            <span class="text-xs text-purple-600"><i class="fa-solid fa-code"></i> CSR & AI Tech</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-blue transition-all-custom mb-1">
+            Program CSR: Basic Programming Using AI Tool
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_csr">
+            Inisiatif tanggungjawab sosial mengajar asas kod dan automasi menggunakan teknologi alatan kecerdasan buatan moden.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">En. Mohd Fuad Bin Ibrahim</p>
+            </div>
+            <a href="https://wa.me/60194422364?text=Pertanyaan%20Mengenai%20Program%20CSR%20AI%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-4422364
+            </a>
+          </div>
+        </div>
+
+        <!-- 13. Senamrobik -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-green hover:shadow-lg transition-all-custom" data-category="kesukanan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-emerald-100 text-corp-green" data-i18n="cat_sports">Kesukanan</span>
+            <span class="text-xs text-slate-400"><i class="fa-solid fa-heart-pulse"></i> Kecergasan</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-green transition-all-custom mb-1">
+            Senamrobik Perdana
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_aerobics">
+            Aktiviti pemanasan badan dan gaya hidup sihat membabitkan semua peserta, warga kampus dan pengunjung festival.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">En. Shamsul Arif bin Ismail</p>
+            </div>
+            <a href="https://wa.me/60125592256?text=Pertanyaan%20Mengenai%20Senamrobik%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-5592256
+            </a>
+          </div>
+        </div>
+
+        <!-- 14. Pickleball Tertutup POLYCC Zon Kedah / Perlis -->
+        <div class="activity-card group bg-slate-50 hover:bg-white rounded-2xl p-5 border border-slate-200 hover:border-corp-green hover:shadow-lg transition-all-custom" data-category="kesukanan">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md bg-emerald-100 text-corp-green" data-i18n="cat_sports">Kesukanan</span>
+            <span class="text-xs text-emerald-600"><i class="fa-solid fa-table-tennis-paddle-ball"></i> Pickleball</span>
+          </div>
+          <h3 class="text-base font-bold text-corp-navy group-hover:text-corp-green transition-all-custom mb-1">
+            Pickleball Tertutup POLYCC Zon Kedah / Perlis
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 line-clamp-2" data-i18n="act_desc_pickleball">
+            Kejohanan sukan Pickleball yang meriah menghimpunkan pemain dan atlet daripada 12 institusi zon utara.
+          </p>
+          <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-medium" data-i18n="lbl_coordinator">Penyelaras</p>
+              <p class="font-bold text-slate-700">En. Shamsul Arif bin Ismail</p>
+            </div>
+            <a href="https://wa.me/60125592256?text=Pertanyaan%20Mengenai%20Pickleball%20IMF2026" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-5592256
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== TENTATIF PROGRAM SECTION ==================== -->
+  <section id="tentatif" class="py-14 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold text-corp-blue uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-200" data-i18n="tentatif_tag">
+          JADUAL TENTATIF RASMI
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-corp-navy mt-2 tracking-tight" data-i18n="tentatif_title">
+          Atur Cara Program 2 Hari
+        </h2>
+        <p class="text-sm text-slate-500 mt-2" data-i18n="tentatif_desc">
+          Rancang jadual kehadiran anda sepanjang 14 hingga 15 September 2026 di Politeknik Tuanku Sultanah Bahiyah.
+        </p>
+
+        <!-- Day Switcher Tabs -->
+        <div class="inline-flex bg-slate-200/80 p-1.5 rounded-2xl mt-6 gap-2">
+          <button id="tab-btn-day1" onclick="switchDay(1)" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-corp-navy text-white shadow transition-all-custom flex items-center gap-2">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span data-i18n="day_1_tab">Hari 1: 14 Sept 2026 (Isnin)</span>
+          </button>
+          <button id="tab-btn-day2" onclick="switchDay(2)" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-slate-600 hover:text-corp-navy transition-all-custom flex items-center gap-2">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span data-i18n="day_2_tab">Hari 2: 15 Sept 2026 (Selasa)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Schedule Content: DAY 1 -->
+      <div id="schedule-day1" class="max-w-4xl mx-auto space-y-4">
+        
+        <!-- Slot 1: 8.30 AM - 12.30 PM -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-corp-blue border-y border-r border-slate-200 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2 text-corp-blue font-bold text-sm">
+              <i class="fa-regular fa-clock"></i>
+              <span>8.30 AM – 12.30 PM</span>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-corp-blue font-semibold w-max" data-i18n="lbl_morning_session">Sesi Pagi: Acara Serentak</span>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>3 Minutes Pitching</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Mindbizz Quiz Challenge</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Video Promosi Produk (TikTok/Reels)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Best Deco Showcase The Next Top Hawker</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Gerai Jualan Tertinggi The Next Top Hawker</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Pickleball Tertutup POLYCC Zon Kedah / Perlis</span>
+            </div>
+            <div class="flex items-start gap-2 sm:col-span-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Transforming Waste Into Inspiring Works of Art: Tema Kemerdekaan</span>
+            </div>
+            <div class="flex items-start gap-2 sm:col-span-2">
+              <i class="fa-solid fa-caret-right text-corp-gold mt-1"></i>
+              <span>Pameran Agensi Korporat, Unit Pengurusan Psikologi serta Kelab dan Organisasi PTSB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slot 2: 9.30 AM - 12.00 PM -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-corp-teal border-y border-r border-slate-200 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2 text-corp-teal font-bold text-sm">
+              <i class="fa-regular fa-clock"></i>
+              <span>9.30 AM – 12.00 PM</span>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-teal-50 text-corp-teal font-semibold w-max" data-i18n="lbl_talk_session">Sesi Wacana Keusahawanan</span>
+          </div>
+          <h4 class="font-bold text-slate-800 text-sm sm:text-base">
+            Ceramah "Memulakan Perniagaan: Cabaran dan Peluang"
+          </h4>
+          <p class="text-xs text-slate-500 mt-1" data-i18n="talk_sub">Perkongsian berwawasan daripada pakar industri mengenai selok-belok ekosistem perniagaan.</p>
+        </div>
+
+        <!-- Slot 3: 2.30 PM - 4.30 PM -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-corp-gold border-y border-r border-slate-200 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2 text-corp-gold font-bold text-sm">
+              <i class="fa-regular fa-clock"></i>
+              <span>2.30 PM – 4.30 PM</span>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-50 text-corp-gold font-semibold w-max" data-i18n="lbl_afternoon_session">Sesi Petang & Antarabangsa</span>
+          </div>
+          
+          <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-circle-play text-amber-500 mt-1"></i>
+              <div>
+                <strong>Program FINFIT Challenge 2026 Edisi Utara - AKPK</strong>
+                <p class="text-xs text-slate-500" data-i18n="sch_finfit_sub">Pertandingan dan simulasi interaktif literasi kewangan.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2 pt-2 border-t border-slate-100">
+              <i class="fa-solid fa-circle-play text-amber-500 mt-1"></i>
+              <div>
+                <strong>Perkongsian Ilmu Dari Wakil Indonesia, Thailand dan Malaysia</strong>
+                <p class="text-xs text-slate-500" data-i18n="sch_global_sub">Sesi sinergi antarabangsa bersama pembentang serantau.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Schedule Content: DAY 2 -->
+      <div id="schedule-day2" class="max-w-4xl mx-auto space-y-4 hidden">
+        
+        <!-- Slot 1: 8.00 AM - 9.30 AM -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-corp-green border-y border-r border-slate-200 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2 text-corp-green font-bold text-sm">
+              <i class="fa-regular fa-clock"></i>
+              <span>8.00 AM – 9.30 AM</span>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-corp-green font-semibold w-max" data-i18n="lbl_sports_session">Kesihatan & Kecergasan</span>
+          </div>
+          <h4 class="font-bold text-slate-800 text-sm sm:text-base">
+            Senamrobik Perdana
+          </h4>
+          <p class="text-xs text-slate-500 mt-1" data-i18n="sch_aerobics_sub">Penyertaan terbuka kepada semua kontinjen POLYCC dan pengunjung.</p>
+        </div>
+
+        <!-- Slot 2: 9.30 AM - 12.30 PM -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-corp-blue border-y border-r border-slate-200 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2 text-corp-blue font-bold text-sm">
+              <i class="fa-regular fa-clock"></i>
+              <span>9.30 AM – 12.30 PM</span>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-corp-blue font-semibold w-max" data-i18n="lbl_finals_session">Peringkat Akhir & Bengkel</span>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-trophy text-amber-500 mt-1"></i>
+              <span>Peringkat Akhir Best Deco Showcase The Next Top Hawker</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-trophy text-amber-500 mt-1"></i>
+              <span>Peringkat Akhir Gerai Jualan Tertinggi The Next Top Hawker</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-lightbulb text-corp-teal mt-1"></i>
+              <span>Business Model Canvas: Peta Jalan Kejayaan</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-code text-indigo-500 mt-1"></i>
+              <span>Program CSR Basic Programming Using AI Tool</span>
+            </div>
+            <div class="flex items-start gap-2 sm:col-span-2">
+              <i class="fa-solid fa-building text-slate-500 mt-1"></i>
+              <span>Pameran Agensi Korporat, Unit Pengurusan Psikologi serta Kelab dan Organisasi PTSB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slot 3: 2.00 PM - 4.00 PM -->
+        <div class="bg-gradient-to-r from-corp-navy to-corp-blue rounded-2xl p-6 text-white shadow-md">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2 text-amber-300 font-bold text-sm">
+              <i class="fa-solid fa-award"></i>
+              <span>2.00 PM – 4.00 PM</span>
+            </div>
+            <span class="text-xs px-3 py-1 rounded-full bg-white/10 text-emerald-300 border border-emerald-400/30 font-semibold w-max" data-i18n="lbl_closing_badge">Kemuncak Acara</span>
+          </div>
+          <h4 class="font-extrabold text-white text-base sm:text-lg" data-i18n="sch_closing_title">
+            Majlis Perasmian Penutupan & Penyampaian Hadiah
+          </h4>
+          <p class="text-xs text-slate-300 mt-1" data-i18n="sch_closing_sub">Pengumuman para pemenang setiap kategori aktiviti dan persembahan penutup festival.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== DIREKTORI PEGAWAI PENYELARAS ==================== -->
+  <section id="contacts" class="py-14 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <span class="text-xs font-bold text-corp-green uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200" data-i18n="contact_tag">
+          DIREKTORI RASMI
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-corp-navy mt-2 tracking-tight" data-i18n="contact_title">
+          Pegawai Penyelaras Aktiviti
+        </h2>
+        <p class="text-sm text-slate-500 mt-2" data-i18n="contact_desc">
+          Sebarang pertanyaan mengenai syarat penyertaan dan teknikal acara boleh dirujuk terus kepada penyelaras yang berkaitan.
+        </p>
+
+        <!-- Coordinator Search Filter -->
+        <div class="relative max-w-md mx-auto mt-6">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input type="text" id="contact-search" oninput="searchContacts()" placeholder="Cari nama aktiviti atau penyelaras..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-corp-blue/50 focus:border-corp-blue transition-all-custom">
+        </div>
+      </div>
+
+      <!-- Director of Program Highlight Card -->
+      <div class="max-w-3xl mx-auto mb-8 bg-gradient-to-br from-corp-navy via-corp-blue to-slate-900 rounded-2xl p-6 text-white shadow-md border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4 text-left">
+          <div class="w-14 h-14 rounded-2xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-300 text-2xl shrink-0">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div>
+            <span class="text-[11px] uppercase font-bold text-amber-300 tracking-wider" data-i18n="lbl_program_director">Pengarah Program IMF 2026</span>
+            <h4 class="text-lg font-extrabold text-white">Ts. Mohd Iqbal Syazwan bin Azizan</h4>
+            <p class="text-xs text-slate-300">Politeknik Tuanku Sultanah Bahiyah (PTSB)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <a href="https://wa.me/60135130082?text=Pertanyaan%20Mengenai%20Program%20IMF2026" target="_blank" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all-custom shadow-md">
+            <i class="fa-brands fa-whatsapp text-sm"></i> 013-5130082
+          </a>
+        </div>
+      </div>
+
+      <!-- Coordinators List Grid (Complete from INFO - NO DIHUBUNGI.pdf) -->
+      <div id="contact-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Coordinator Item 1 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-blue hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-blue bg-blue-50 px-2 py-0.5 rounded border border-blue-200">3 Minutes Pitching</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Hasnita binti Ramli</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_group">Pertandingan Berkumpulan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60196559686" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-6559686
+            </a>
+            <a href="tel:0196559686" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 2 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-blue hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">FINFIT Challenge - AKPK</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Hajaratul binti Ahmad</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_group">Pertandingan Berkumpulan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60194121831" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-4121831
+            </a>
+            <a href="tel:0194121831" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 3 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-blue hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Transforming Waste Art</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Kalsom binti Othman</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_group">Pertandingan Berkumpulan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60134480408" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4480408
+            </a>
+            <a href="tel:0134480408" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 4 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-blue hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-pink-700 bg-pink-50 px-2 py-0.5 rounded border border-pink-200">Video Promosi Produk</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Haliza binti Aziz</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_group">Pertandingan Berkumpulan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60134946479" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4946479
+            </a>
+            <a href="tel:0134946479" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 5 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-blue hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-gold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Best Deco Showcase</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Syahanim binti Saidun</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_group">The Next Top Hawker</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60135201604" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-5201604
+            </a>
+            <a href="tel:0135201604" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 6 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-blue hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-green bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Gerai Jualan Tertinggi</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Ts. Nurhuda binti Ismail</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_group">The Next Top Hawker</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60122634847" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-2634847
+            </a>
+            <a href="tel:0122634847" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 7 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-gold hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-gold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Mindbizz Quiz Challenge</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Nurul Amira binti Din</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_solo">Pertandingan Individu</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60194719529" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-4719529
+            </a>
+            <a href="tel:0194719529" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 8 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">Pameran Korporat & Psikologi</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Sharipah Khadijah binti S. Hashim</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_corp">Aktiviti Korporat & Kelab</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60104641220" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 010-4641220
+            </a>
+            <a href="tel:0104641220" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 9 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">CSR AI Programming</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">En. Mohd Fuad Bin Ibrahim</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_corp">Aktiviti Korporat</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60194422364" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 019-4422364
+            </a>
+            <a href="tel:0194422364" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 10 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-teal hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-teal bg-teal-50 px-2 py-0.5 rounded border border-teal-200">BMC & Ceramah Perniagaan</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Nurul Syamshida binti Mokhtar</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_biz">Aktiviti Keusahawanan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60134406779" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 013-4406779
+            </a>
+            <a href="tel:0134406779" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 11 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-teal hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-teal bg-teal-50 px-2 py-0.5 rounded border border-teal-200">Perkongsian Antarabangsa</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">Pn. Suryani binti Sabri</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_biz">Aktiviti Keusahawanan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60125052624" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-5052624
+            </a>
+            <a href="tel:0125052624" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coordinator Item 12 -->
+        <div class="contact-item bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-corp-green hover:shadow transition-all-custom">
+          <span class="text-[10px] font-bold uppercase text-corp-green bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Senamrobik & Pickleball</span>
+          <h4 class="text-sm font-bold text-slate-800 mt-2">En. Shamsul Arif bin Ismail</h4>
+          <p class="text-xs text-slate-500 mb-3" data-i18n="cat_sports">Aktiviti Kesukanan</p>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/60125592256" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1 transition-all-custom">
+              <i class="fa-brands fa-whatsapp"></i> 012-5592256
+            </a>
+            <a href="tel:0125592256" class="p-1.5 px-2.5 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 text-xs font-semibold transition-all-custom">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== LOKASI & PETA PTSB ==================== -->
+  <section id="location" class="py-14 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Info Card -->
+        <div class="lg:col-span-5 space-y-5">
+          <span class="text-xs font-bold text-corp-navy uppercase tracking-wider bg-slate-200 px-3 py-1 rounded-full" data-i18n="loc_tag">
+            PANDU ARAH KE LOKASI
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-corp-navy tracking-tight" data-i18n="loc_title">
+            Politeknik Tuanku Sultanah Bahiyah (PTSB)
+          </h2>
+          <p class="text-sm text-slate-600" data-i18n="loc_desc">
+            Terletak strategik di kawasan Kulim Hi-Tech Park, Kedah dengan kemudahan dewan seminar, ruang pameran, kawasan reruai dan gelanggang sukan yang lengkap.
+          </p>
+
+          <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 text-corp-blue flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-map-pin"></i>
+              </div>
+              <div>
+                <strong class="block text-slate-900" data-i18n="loc_addr_title">Alamat Rasmi:</strong>
+                <span>Politeknik Tuanku Sultanah Bahiyah, No 1, Kulim Hi-Tech Park, 09000 Kulim, Kedah Darul Aman.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-corp-green flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-square-parking"></i>
+              </div>
+              <div>
+                <strong class="block text-slate-900" data-i18n="loc_facilities_title">Kemudahan:</strong>
+                <span data-i18n="loc_facilities_desc">Tempat letak kenderaan percuma, surau, medan selera, kafeteria & akses mesra OKU.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a href="https://maps.google.com/?q=Politeknik+Tuanku+Sultanah+Bahiyah+Kulim" target="_blank" class="px-4 py-2.5 rounded-xl bg-corp-navy hover:bg-corp-blue text-white text-xs font-bold flex items-center gap-2 transition-all-custom">
+              <i class="fa-solid fa-location-arrow"></i> Google Maps
+            </a>
+            <a href="https://waze.com/ul?q=Politeknik%20Tuanku%20Sultanah%20Bahiyah" target="_blank" class="px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold flex items-center gap-2 transition-all-custom">
+              <i class="fa-brands fa-waze"></i> Waze Navigation
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Google Maps Embed Frame -->
+        <div class="lg:col-span-7">
+          <div class="bg-white p-2 sm:p-3 rounded-3xl border border-slate-200 shadow-md overflow-hidden">
+            <div class="relative w-full h-[320px] sm:h-[380px] rounded-2xl overflow-hidden bg-slate-100">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.871866380644!2d100.58434697474665!3d5.389279994589765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304acdb518ce577d%3A0x6e273f32467dbb54!2sPoliteknik%20Tuanku%20Sultanah%20Bahiyah!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full">
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER & LOGO AFFILIATIONS ==================== -->
+  <footer class="bg-corp-navy text-white pt-12 pb-8 border-t-4 border-corp-gold mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Partner & National Strategic Branding Logos -->
+      <div class="pb-10 border-b border-white/10">
+        <p class="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6" data-i18n="footer_partners">
+          Inisiatif Bersama & Kerjasama Strategik
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-90">
+          
+          <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+            <i class="fa-solid fa-flag text-amber-400"></i>
+            <span class="text-xs font-bold">MALAYSIA MADANI</span>
+          </div>
+
+          <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+            <i class="fa-solid fa-plane-departure text-emerald-400"></i>
+            <span class="text-xs font-bold">Visit Malaysia 2026</span>
+          </div>
+
+          <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+            <i class="fa-solid fa-building-columns text-sky-400"></i>
+            <span class="text-xs font-bold">POLYCC TVET For All</span>
+          </div>
+
+          <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+            <i class="fa-solid fa-award text-pink-400"></i>
+            <span class="text-xs font-bold">TVET Malaysia</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer Bottom Details -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div class="text-center md:text-left">
+          <p class="text-white font-semibold">International MindBizz Fest 2026 (IMF2026)</p>
+          <p class="mt-0.5">Hak Cipta Terpelihara © 2026 Politeknik Tuanku Sultanah Bahiyah (PTSB).</p>
+        </div>
+
+        <!-- Social Media Channels (As shown on official poster) -->
+        <div class="flex items-center gap-3">
+          <span class="text-[11px] text-slate-400">Ikuti Kami:</span>
+          <a href="https://facebook.com" target="_blank" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-corp-blue flex items-center justify-center text-white transition-all-custom" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-red-600 flex items-center justify-center text-white transition-all-custom" title="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-pink-600 flex items-center justify-center text-white transition-all-custom" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-slate-700 flex items-center justify-center text-white transition-all-custom" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== NOTICE MODAL (PENGUMUMAN) ==================== -->
+  <div id="notice-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 transform transition-all text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-100 text-corp-gold flex items-center justify-center text-2xl mb-4">
+        <i class="fa-solid fa-bullhorn"></i>
+      </div>
+      <h3 class="text-lg font-bold text-corp-navy mb-2" data-i18n="modal_title">Status Pendaftaran Acara</h3>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6" data-i18n="modal_desc">
+        Pendaftaran bagi pertandingan dan penyertaan gerai jualan International MindBizz Fest 2026 akan dikemaskini dan dibuka tidak lama lagi. Sila hubungi Pegawai Penyelaras aktiviti bagi maklumat awal syarat penyertaan.
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <button onclick="closeNoticeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-all-custom" data-i18n="modal_close">
+          Tutup
+        </button>
+        <a href="#contacts" onclick="closeNoticeModal()" class="px-5 py-2.5 rounded-xl bg-corp-blue hover:bg-corp-navy text-white font-semibold text-xs transition-all-custom" data-i18n="modal_contact">
+          Hubungi Penyelaras
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. DWIBAHASA (BM | EN) DICTIONARY
+    // -------------------------------------------------------------
+    const translations = {
+      bm: {
+        nav_about: "Tentang",
+        nav_stats: "Statistik",
+        nav_activities: "Aktiviti",
+        nav_schedule: "Tentatif",
+        nav_contact: "Penyelaras",
+        nav_location: "Lokasi",
+        hero_tagline: "YOUNG MINDS, GLOBAL BUSINESS",
+        hero_desc: "Pentas mega kolaborasi keusahawanan, inovasi teknologi, dan kepimpinan bakat muda TVET peringkat antarabangsa merentasi Malaysia, Indonesia dan Thailand.",
+        hero_date_label: "Tarikh Program",
+        hero_day_desc: "Isnin & Selasa (2 Hari)",
+        hero_venue_label: "Lokasi Acara",
+        btn_explore_activities: "Terokai Aktiviti",
+        btn_view_schedule: "Jadual Tentatif",
+        btn_coordinators: "Hubungi Penyelaras",
+        hero_pillars_title: "Teras Utama Program IMF 2026",
+        pillar_1: "Inovasi",
+        pillar_2: "Keusahawanan",
+        pillar_3: "Teknologi",
+        pillar_4: "Global",
+        pillar_5: "Kolaborasi",
+        pillar_6: "Kreatif",
+    
+        cd_days: "Hari",
+        cd_hours: "Jam",
+        cd_mins: "Minit",
+        cd_secs: "Saat",
+        stats_title: "Impak & Statistik Festival",
+        stats_subtitle: "Sasaran penglibatan berskala tinggi merangkumi institusi TVET POLYCC dan serantau",
+        stat_polycc: "POLYCC Zon Kedah / Perlis",
+        stat_polycc_sub: "Institusi Politeknik & Kolej Komuniti",
+        stat_activities: "Aktiviti & Pertandingan",
+        stat_activities_sub: "Individu, Kumpulan & Korporat",
+        stat_participants: "Sasaran Peserta",
+        stat_participants_sub: "Pelajar, Komuniti & Industri",
+        stat_countries: "Negara Terlibat",
+        about_tag: "MISI & VISI FESTIVAL",
+        about_heading: "Memperkasa Bakat Madani Melalui Keusahawanan Bertaraf Global",
+        about_desc_1: "International MindBizz Fest 2026 (IMF2026) merupakan inisiatif unggul di bawah Jabatan Pendidikan Politeknik dan Kolej Komuniti (JPPKK) anjuran Politeknik Tuanku Sultanah Bahiyah bagi melahirkan graduan TVET yang berdaya cipta, celik kewangan dan bersedia memimpin arena perniagaan moden.",
+        about_pt1: "Pendedahan kepada teknologi Artificial Intelligence (AI) & strategi pemasaran digital.",
+        about_pt2: "Jaringan perkongsian ilmu rentas sempadan bersama perwakilan antarabangsa.",
+        about_pt3: "Peluang pembiayaan dan pendedahan jualan sebenar (The Next Top Hawker).",
+        about_label: "Mengenai IMF 2026",
+        about_title_2: "Platform Integrasi Akademik, Industri & Komuniti",
+        about_desc_2: "Bertemakan \"Young Minds, Global Business\", festival ini bukan sekadar pertandingan, malah hab interaktif yang menggabungkan 14 acara utama merangkumi simulasi perniagaan, literasi kewangan bersama AKPK, kelestarian alam sekitar, kesihatan fizikal, serta program CSR berteraskan AI.",
+        hl_1_title: "Kelestarian & Seni",
+        hl_1_desc: "Pertandingan seni bahan kitar semula sempena sambutan kemerdekaan negara.",
+        hl_2_title: "Teknologi & AI",
+        hl_2_desc: "Bengkel pengaturcaraan asas CSR menggunakan alatan AI terkini.",
+        hl_3_title: "FinFit Bersama AKPK",
+        hl_3_desc: "Pendidikan pengurusan kewangan berimpak tinggi edisi utara.",
+        reg_status_title: "Status Pendaftaran Acara:",
+        reg_status_sub: "Portal pendaftaran rasmi akan dibuka dan dikemaskini dalam masa terdekat.",
+        btn_more_info: "Maklumat Lanjut",
+        act_tag: "14 ACARA UTAMA",
+        act_title: "Senarai Aktiviti & Pertandingan IMF 2026",
+        act_desc: "Pilih kategori di bawah untuk meneliti perincian acara, format penyertaan dan pegawai penyelaras yang boleh dihubungi.",
+        filter_all: "Semua Aktiviti (14)",
+        filter_group: "Pertandingan Kumpulan (6)",
+        filter_solo: "Individu (1)",
+        filter_biz: "Keusahawanan (3)",
+        filter_corp: "Aktiviti Korporat (2)",
+        filter_sports: "Kesukanan (2)",
+        cat_group: "Kumpulan",
+        cat_solo: "Individu",
+        cat_biz: "Keusahawanan",
+        cat_corp: "Korporat",
+        cat_sports: "Kesukanan",
+        lbl_coordinator: "Penyelaras",
+        act_desc_pitching: "Pembentangan idea perniagaan inovatif dan model komersial secara padat serta meyakinkan dalam masa 3 minit di hadapan panel juri.",
+        act_desc_finfit: "Cabaran celik kewangan dan pengurusan bajet interaktif anjuran bersama Agensi Kaunseling dan Pengurusan Kredit (AKPK).",
+        act_desc_waste: "Pertandingan mencipta karya seni kreatif dan arca bermakna daripada bahan terbuang bertemakan semangat kemerdekaan Malaysia.",
+        act_desc_video: "Penghasilan video pemasaran pendek berimpak tinggi yang kreatif untuk mempromosikan produk jualan usahawan muda di media sosial.",
+        act_desc_deco: "Penilaian kreativiti hiasan reruai gerai jualan, susun atur visual (visual merchandising), kebersihan dan penjenamaan gerai.",
+        act_desc_sales: "Pertandingan jualan sebenar (live marketplace) bagi menguji kemahiran strategi harga, tarikan pelanggan dan kutipan jualan tertinggi.",
+        act_desc_quiz: "Kuiz interaktif menguji kepantasan dan pengetahuan am dalam bidang perniagaan, literasi kewangan, teknologi dan ekonomi global.",
+        act_desc_bmc: "Bengkel praktikal memetakan cadangan nilai produk, struktur kos, sasaran pasaran dan strategi perniagaan yang mantap.",
+        act_desc_talk: "Sesi wacana bersama tokoh usahawan berkongsi realiti cabaran pemula (startup), pengurusan risiko dan peluang pasaran masa kini.",
+        act_desc_international: "Forum perkongsian eksklusif trend perniagaan serantau bersama penceramah jemputan dari Indonesia, Thailand dan Malaysia.",
+        act_desc_exhibition: "Pameran khidmat industri, konsultasi kesihatan mental dan psikologi kerjaya serta penglibatan persatuan pelajar.",
+        act_desc_csr: "Inisiatif tanggungjawab sosial mengajar asas kod dan automasi menggunakan teknologi alatan kecerdasan buatan moden.",
+        act_desc_aerobics: "Aktiviti pemanasan badan dan gaya hidup sihat membabitkan semua peserta, warga kampus dan pengunjung festival.",
+        act_desc_pickleball: "Kejohanan sukan Pickleball yang meriah menghimpunkan pemain dan atlet daripada 12 institusi zon utara.",
+        tentatif_tag: "JADUAL TENTATIF RASMI",
+        tentatif_title: "Atur Cara Program 2 Hari",
+        tentatif_desc: "Rancang jadual kehadiran anda sepanjang 14 hingga 15 September 2026 di Politeknik Tuanku Sultanah Bahiyah.",
+        day_1_tab: "Hari 1: 14 Sept 2026 (Isnin)",
+        day_2_tab: "Hari 2: 15 Sept 2026 (Selasa)",
+        lbl_morning_session: "Sesi Pagi: Acara Serentak",
+        lbl_talk_session: "Sesi Wacana Keusahawanan",
+        talk_sub: "Perkongsian berwawasan daripada pakar industri mengenai selok-belok ekosistem perniagaan.",
+        lbl_afternoon_session: "Sesi Petang & Antarabangsa",
+        sch_finfit_sub: "Pertandingan dan simulasi interaktif literasi kewangan.",
+        sch_global_sub: "Sesi sinergi antarabangsa bersama pembentang serantau.",
+        lbl_sports_session: "Kesihatan & Kecergasan",
+        sch_aerobics_sub: "Penyertaan terbuka kepada semua kontinjen POLYCC dan pengunjung.",
+        lbl_finals_session: "Peringkat Akhir & Bengkel",
+        lbl_closing_badge: "Kemuncak Acara",
+        sch_closing_title: "Majlis Perasmian Penutupan & Penyampaian Hadiah",
+        sch_closing_sub: "Pengumuman para pemenang setiap kategori aktiviti dan persembahan penutup festival.",
+        contact_tag: "DIREKTORI RASMI",
+        contact_title: "Pegawai Penyelaras Aktiviti",
+        contact_desc: "Sebarang pertanyaan mengenai syarat penyertaan dan teknikal acara boleh dirujuk terus kepada penyelaras yang berkaitan.",
+        lbl_program_director: "Pengarah Program IMF 2026",
+        loc_tag: "PANDU ARAH KE LOKASI",
+        loc_title: "Politeknik Tuanku Sultanah Bahiyah (PTSB)",
+        loc_desc: "Terletak strategik di kawasan Kulim Hi-Tech Park, Kedah dengan kemudahan dewan seminar, ruang pameran, kawasan reruai dan gelanggang sukan yang lengkap.",
+        loc_addr_title: "Alamat Rasmi:",
+        loc_facilities_title: "Kemudahan:",
+        loc_facilities_desc: "Tempat letak kenderaan percuma, surau, medan selera, kafeteria & akses mesra OKU.",
+        footer_partners: "Inisiatif Bersama & Kerjasama Strategik",
+        modal_title: "Status Pendaftaran Acara",
+        modal_desc: "Pendaftaran bagi pertandingan dan penyertaan gerai jualan International MindBizz Fest 2026 akan dikemaskini dan dibuka tidak lama lagi. Sila hubungi Pegawai Penyelaras aktiviti bagi maklumat awal syarat penyertaan.",
+        modal_close: "Tutup",
+        modal_contact: "Hubungi Penyelaras"
+      },
+      en: {
+        nav_about: "About",
+        nav_stats: "Statistics",
+        nav_activities: "Activities",
+        nav_schedule: "Schedule",
+        nav_contact: "Coordinators",
+        nav_location: "Location",
+        hero_tagline: "YOUNG MINDS, GLOBAL BUSINESS",
+        hero_desc: "A premier international festival uniting young TVET talents, entrepreneurship, and cutting-edge technology across Malaysia, Indonesia, and Thailand.",
+        hero_date_label: "Event Date",
+        hero_day_desc: "Monday & Tuesday (2 Days)",
+        hero_venue_label: "Event Venue",
+        btn_explore_activities: "Explore Activities",
+        btn_view_schedule: "View Schedule",
+        btn_coordinators: "Contact Coordinators",
+        hero_pillars_title: "Key Pillars of IMF 2026",
+        pillar_1: "Innovation",
+        pillar_2: "Entrepreneurship",
+        pillar_3: "Technology",
+        pillar_4: "Global",
+        pillar_5: "Collaboration",
+        pillar_6: "Creative",
+        countdown_badge: "Event Countdown",
+        countdown_title: "Counting Down to IMF 2026",
+        countdown_sub: "14 September 2026 • Dewan Sri Bahiyah, PTSB",
+        cd_days: "Days",
+        cd_hours: "Hours",
+        cd_mins: "Mins",
+        cd_secs: "Secs",
+        stats_title: "Festival Impact & Key Figures",
+        stats_subtitle: "High-impact participation target across POLYCC TVET institutions and international partners",
+        stat_polycc: "POLYCC Kedah / Perlis Zone",
+        stat_polycc_sub: "Polytechnics & Community Colleges",
+        stat_activities: "Activities & Competitions",
+        stat_activities_sub: "Group, Individual & Corporate",
+        stat_participants: "Target Participants",
+        stat_participants_sub: "Students, Community & Industry",
+        stat_countries: "Participating Countries",
+        about_tag: "MISSION & VISION",
+        about_heading: "Empowering Talents Through Global Entrepreneurial Excellence",
+        about_desc_1: "The International MindBizz Fest 2026 (IMF2026) is a flagship initiative under the Department of Polytechnic and Community College Education (JPPKK), organized by Politeknik Tuanku Sultanah Bahiyah to nurture forward-thinking, financially savvy, and industry-ready TVET graduates.",
+        about_pt1: "Hands-on exposure to Artificial Intelligence (AI) tools and digital marketing.",
+        about_pt2: "Cross-border knowledge exchange with international delegates.",
+        about_pt3: "Real-world commercial experience & funding potential (The Next Top Hawker).",
+        about_label: "About IMF 2026",
+        about_title_2: "A Holistic Platform for Academics, Industry & Community",
+        about_desc_2: "Guided by the theme \"Young Minds, Global Business\", the fest brings together 14 major events spanning business simulation, financial literacy with AKPK, sustainable eco-art, wellness, and AI CSR programs.",
+        hl_1_title: "Sustainability & Art",
+        hl_1_desc: "Eco-art competition transforming recycled materials with patriotic Merdeka themes.",
+        hl_2_title: "Tech & AI Tools",
+        hl_2_desc: "Hands-on CSR coding workshop utilizing cutting-edge AI utilities.",
+        hl_3_title: "FinFit with AKPK",
+        hl_3_desc: "High-impact financial literacy and personal budget management challenge.",
+        reg_status_title: "Registration Status:",
+        reg_status_sub: "Official registration portal will be updated and opened soon.",
+        btn_more_info: "More Info",
+        act_tag: "14 FEATURED EVENTS",
+        act_title: "List of Activities & Competitions",
+        act_desc: "Select a category below to explore event formats, criteria, and contact coordinators.",
+        filter_all: "All Activities (14)",
+        filter_group: "Group Competitions (6)",
+        filter_solo: "Individual (1)",
+        filter_biz: "Entrepreneurship (3)",
+        filter_corp: "Corporate Events (2)",
+        filter_sports: "Sports (2)",
+        cat_group: "Group",
+        cat_solo: "Individual",
+        cat_biz: "Business",
+        cat_corp: "Corporate",
+        cat_sports: "Sports",
+        lbl_coordinator: "Coordinator",
+        act_desc_pitching: "Compact and persuasive 3-minute pitching of commercial ideas and viable business models before an expert jury.",
+        act_desc_finfit: "Interactive financial literacy challenge co-organized with Credit Counselling and Debt Management Agency (AKPK).",
+        act_desc_waste: "Creative recycled art and sculpture competition celebrating Malaysia's National Day theme.",
+        act_desc_video: "Short-form promotional video competition (TikTok/Reels) to market products creatively on social media.",
+        act_desc_deco: "Judging stall creativity, visual merchandising, hygiene, and branding aesthetics.",
+        act_desc_sales: "Live marketplace sales competition assessing pricing strategy, customer engagement, and total revenue.",
+        act_desc_quiz: "Fast-paced trivia testing general business knowledge, global economy, tech, and financial literacy.",
+        act_desc_bmc: "Practical hands-on workshop outlining value proposition, cost structure, and go-to-market plan.",
+        act_desc_talk: "Inspirational talk with industry founders on startup challenges, risk mitigation, and emerging opportunities.",
+        act_desc_international: "Exclusive regional insight sharing by guest speakers representing Indonesia, Thailand, and Malaysia.",
+        act_desc_exhibition: "Corporate showcase, psychological counselling booth, and student club activations.",
+        act_desc_csr: "Community outreach workshop teaching foundational programming assisted by modern AI tools.",
+        act_desc_aerobics: "Energetic mass morning aerobics for all participants, staff, and visitors.",
+        act_desc_pickleball: "Thrilling closed Pickleball tournament among northern zone TVET institutions.",
+        tentatif_tag: "OFFICIAL ITINERARY",
+        tentatif_title: "2-Day Event Schedule",
+        tentatif_desc: "Plan your visit for 14 – 15 September 2026 at Politeknik Tuanku Sultanah Bahiyah, Kulim.",
+        day_1_tab: "Day 1: 14 Sept 2026 (Mon)",
+        day_2_tab: "Day 2: 15 Sept 2026 (Tue)",
+        lbl_morning_session: "Morning: Concurrent Events",
+        lbl_talk_session: "Entrepreneurship Keynote",
+        talk_sub: "Insightful talk by industry experts on modern business ecosystems.",
+        lbl_afternoon_session: "Afternoon & International Session",
+        sch_finfit_sub: "Interactive financial simulation and challenge.",
+        sch_global_sub: "Cross-border knowledge synergy with regional presenters.",
+        lbl_sports_session: "Health & Fitness",
+        sch_aerobics_sub: "Open participation for all contingents and festival visitors.",
+        lbl_finals_session: "Grand Finals & Workshops",
+        lbl_closing_badge: "Grand Finale",
+        sch_closing_title: "Closing Ceremony & Prize Presentation",
+        sch_closing_sub: "Announcement of winners for all competitive categories and festival wrap-up.",
+        contact_tag: "OFFICIAL DIRECTORY",
+        contact_title: "Activity Coordinators",
+        contact_desc: "Direct your enquiries regarding competition criteria and event mechanics to the respective officers.",
+        lbl_program_director: "IMF 2026 Program Director",
+        loc_tag: "GETTING HERE",
+        loc_title: "Politeknik Tuanku Sultanah Bahiyah (PTSB)",
+        loc_desc: "Strategically located in Kulim Hi-Tech Park, Kedah, equipped with comprehensive seminar halls, exhibition spaces, and sports facilities.",
+        loc_addr_title: "Official Address:",
+        loc_facilities_title: "Facilities:",
+        loc_facilities_desc: "Free visitor parking, prayer rooms (surau), food court, cafe & wheelchair access.",
+        footer_partners: "Joint Initiatives & Strategic Partnerships",
+        modal_title: "Event Registration Status",
+        modal_desc: "Registration for competitions and marketplace stalls will open soon. Please get in touch with the respective coordinators for early criteria and details.",
+        modal_close: "Close",
+        modal_contact: "Contact Coordinators"
+      }
+    };
+
+    let currentLang = 'bm';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      
+      // Update toggle buttons styling
+      const btnBm = document.getElementById('lang-bm');
+      const btnEn = document.getElementById('lang-en');
+      if (lang === 'bm') {
+        btnBm.className = "px-2.5 py-1 text-xs font-bold rounded-lg transition-all-custom bg-corp-blue text-white shadow-sm";
+        btnEn.className = "px-2.5 py-1 text-xs font-bold rounded-lg transition-all-custom text-slate-600 hover:text-slate-900";
+        document.documentElement.lang = 'ms';
+      } else {
+        btnEn.className = "px-2.5 py-1 text-xs font-bold rounded-lg transition-all-custom bg-corp-blue text-white shadow-sm";
+        btnBm.className = "px-2.5 py-1 text-xs font-bold rounded-lg transition-all-custom text-slate-600 hover:text-slate-900";
+        document.documentElement.lang = 'en';
+      }
+
+      // Update text in elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(elem => {
+        const key = elem.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          elem.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 2. MOBILE MENU TOGGLER
+    // -------------------------------------------------------------
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // -------------------------------------------------------------
+    // 3. COUNTDOWN TIMER TO 14 SEPTEMBER 2026
+    // -------------------------------------------------------------
+    function initCountdown() {
+      const targetDate = new Date('September 14, 2026 08:30:00 GMT+0800').getTime();
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference > 0) {
+          const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+          document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+          document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+          document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+          document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        } else {
+          document.getElementById('cd-days').innerText = "00";
+          document.getElementById('cd-hours').innerText = "00";
+          document.getElementById('cd-minutes').innerText = "00";
+          document.getElementById('cd-seconds').innerText = "00";
+        }
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    // -------------------------------------------------------------
+    // 4. ACTIVITY FILTERING
+    // -------------------------------------------------------------
+    function filterActivities(category) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.className = "filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-corp-blue text-white shadow-sm";
+        } else {
+          btn.className = "filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all-custom bg-slate-100 text-slate-600 hover:bg-slate-200";
+        }
+      });
+
+      // Filter cards
+      const cards = document.querySelectorAll('.activity-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 5. TENTATIF DAY SWITCHER
+    // -------------------------------------------------------------
+    function switchDay(day) {
+      const btn1 = document.getElementById('tab-btn-day1');
+      const btn2 = document.getElementById('tab-btn-day2');
+      const sched1 = document.getElementById('schedule-day1');
+      const sched2 = document.getElementById('schedule-day2');
+
+      if (day === 1) {
+        btn1.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-corp-navy text-white shadow transition-all-custom flex items-center gap-2";
+        btn2.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-slate-600 hover:text-corp-navy transition-all-custom flex items-center gap-2";
+        sched1.classList.remove('hidden');
+        sched2.classList.add('hidden');
+      } else {
+        btn2.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-corp-navy text-white shadow transition-all-custom flex items-center gap-2";
+        btn1.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-slate-600 hover:text-corp-navy transition-all-custom flex items-center gap-2";
+        sched2.classList.remove('hidden');
+        sched1.classList.add('hidden');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 6. CONTACTS SEARCH
+    // -------------------------------------------------------------
+    function searchContacts() {
+      const query = document.getElementById('contact-search').value.toLowerCase();
+      const items = document.querySelectorAll('.contact-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(query)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 7. NOTICE MODAL
+    // -------------------------------------------------------------
+    function openNoticeModal() {
+      document.getElementById('notice-modal').classList.remove('hidden');
+    }
+
+    function closeNoticeModal() {
+      document.getElementById('notice-modal').classList.add('hidden');
+    }
+
+    // Initialize scripts on load
+    window.addEventListener('DOMContentLoaded', () => {
+      initCountdown();
+    });
+  </script>
+</body>
+</html>
